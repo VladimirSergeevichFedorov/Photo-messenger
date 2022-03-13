@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_register">Регистрация</string>
+    <string name="field_username">Username</string>
+    <string name="field_email">Email</string>
+    <string name="field_mobile_No">Mobile №</string>
+    <string name="field_password">Password</string>
+    <string name="contentDescription_Visibility">Visibility</string>
+    <string name="field_confirm_password">Confirm Password</string>
+    <string name="button_save">Сохранить</string>
+    <string name="button_login">Войти</string>
+    <string name="button_register">Зарегистрироваться</string>
+    <string name="invalid_password">Неверный логин или пароль</string>
+
+
+
+</resources>

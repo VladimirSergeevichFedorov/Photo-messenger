@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.example.photoch";
+option java_multiple_files = true;
+
+message UserStore {
+  string password = 1;
+  string user_name = 2;
+  string email = 3;
+  string mobile_number = 4;
+}
