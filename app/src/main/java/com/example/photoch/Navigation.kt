@@ -5,10 +5,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.api.LoginEntry
-import com.example.domain.find
+import com.example.common.find
 import com.example.photoch.di.LocalAppProvider
 
 @Composable

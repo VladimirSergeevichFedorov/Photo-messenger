@@ -23,6 +23,8 @@ import com.example.feature_login.ui.viewModel.LoginRegisterScreenViewModel
 import com.example.impl.LoginEntryImpl
 import com.example.impl.R
 import com.example.impl.utils.CheckStatus
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @Composable
 fun LoginRegisterScreen(
@@ -30,6 +32,7 @@ fun LoginRegisterScreen(
     viewModel: LoginRegisterScreenViewModel
 ) {
     val context = LocalContext.current
+    val composableScope = rememberCoroutineScope()
     var login by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
     var mobile by rememberSaveable { mutableStateOf("") }
@@ -115,13 +118,18 @@ fun LoginRegisterScreen(
         )
         Button(
             onClick = {
-                when (viewModel.checkPassword(password, login, email, mobile, confirmPassword)) {
-                    CheckStatus.SUCCES -> navController.navigate(LoginEntryImpl.InternalRoutes.LOGIN)
-                    CheckStatus.UNSUCCES -> Toast.makeText(
-                        context,
-                        R.string.invalid_password,
-                        Toast.LENGTH_SHORT
-                    ).show()
+                viewModel.checkRegisterData(password, login, email, mobile, confirmPassword)
+                composableScope.launch {
+                    viewModel.fieldsScreenStateRegister.collect { checkRegister ->
+                        when (checkRegister) {
+                            CheckStatus.SUCCES -> navController.navigate(LoginEntryImpl.InternalRoutes.LOGIN)
+                            CheckStatus.UNSUCCES -> Toast.makeText(
+                                context,
+                                R.string.invalid_password,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
             },
 

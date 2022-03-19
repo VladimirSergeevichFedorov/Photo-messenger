@@ -2,7 +2,7 @@ object Versions {
     // app level
     const val gradle = "7.0.2" // y
 //    const val gradle = "4.2.2" // y
-    const val kotlin = "1.5.10" // y
+    const val kotlin = "1.6.10" // y
     const val googleServise = "4.3.8"
     const val gradlePlagin = "1.5.31"
     const val composeVersion = "1.0.1"
@@ -23,7 +23,7 @@ object Versions {
     const val viewModelVersion = "2.3.1"
     const val viewBinding = "1.4.7"
     const val insetsLib = "0.6.0"
-    const val daggerVersion = "2.36"
+    const val daggerVersion = "2.41"
     const val nav_version = "2.3.5"
     const val picasso = "2.71828"
     const val compose = "1.1.0"

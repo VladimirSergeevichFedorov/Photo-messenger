@@ -2,28 +2,8 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
-    // Plugins are declared in gradle/libs.versions.toml
-    // Precompiled plugin with the base android configuration.
-    // Declared in buildSrc/.../android-config.gradle.kts.
 }
-//android {
-//    compileSdk = Android.compileSdk
-//
-//    buildTypes {
-//        release {
-//            isMinifyEnabled = true
-//            proguardFiles(
-//                getDefaultProguardFile("proguard-android-optimize.txt"),
-//                "proguard-rules.pro"
-//            )
-//        }
-//    }
-//
-//    buildFeatures.compose = true
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = "1.0.0"
-//    }
-//}
+
 android {
     compileSdk = Android.compileSdk
 
@@ -59,19 +39,19 @@ android {
     }
     composeOptions {
 
-        kotlinCompilerExtensionVersion = "1.0.0"
+        kotlinCompilerExtensionVersion = "1.1.0"
     }
 }
 dependencies {
-
-//    feature-login-data-api(project(ModulesForApi.featureLogin))
-//    implementation(project(ModulesForApi.featureLogin))
     implementation(project(Modules.common))
+    implementation(project(Modules.domain))
     implementation(project(ModulesForApi.data))
     api(project(ModulesForApi.featureLogin))
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
-
     implementation(AppDependencies.featureLoginLibraries)
     kapt(AppDependencies.diLibrariesKapt)
+
+    testImplementation(AppDependencies.testLibraries)
+    androidTestImplementation(AppDependencies.androidTestLibraries)
 }

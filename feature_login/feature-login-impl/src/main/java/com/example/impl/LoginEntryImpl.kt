@@ -9,8 +9,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.api.LocalDataProvider
 import com.example.api.LoginEntry
-import com.example.domain.Destinations
-import com.example.domain.di.injectedViewModel
+import com.example.common.Destinations
+import com.example.common.di.injectedViewModel
 import com.example.feature_login.LoginAuthScreen
 import com.example.feature_login.ui.screen.LoginRegisterScreen
 import com.example.impl.di.DaggerLoginComponent

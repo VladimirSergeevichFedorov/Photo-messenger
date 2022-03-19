@@ -1,6 +1,5 @@
 package com.example.feature_login
 
-import android.app.ProgressDialog.show
 import android.graphics.Color.parseColor
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -78,10 +77,10 @@ fun LoginAuthScreen(
         )
         Button(
             onClick = {
-                viewModel.checkPassword(password, login)
+                viewModel.checkLoginAndPassword(password, login)
                 composableScope.launch {
-                    viewModel.fieldsScreenState.collect {
-                        when (it) {
+                    viewModel.fieldsScreenState.collect { checkAuth ->
+                        when (checkAuth) {
                             CheckStatus.SUCCES -> Toast.makeText(
                                 context,
                                 "Пароль совпадает",

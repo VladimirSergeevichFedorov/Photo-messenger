@@ -1,10 +1,11 @@
 package com.example.photoch
 
 import android.app.Application
-import com.example.domain.di.DaggerCommonComponent
+import com.example.common.di.DaggerCommonComponent
 import com.example.impl.di.DaggerDataComponent
 import com.example.photoch.di.AppProvider
 import com.example.photoch.di.DaggerAppComponent
+
 
 class PhotochApplication : Application() {
 

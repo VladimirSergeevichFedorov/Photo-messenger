@@ -24,7 +24,7 @@ object UI {
      */
     internal val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
 
-    internal val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.coreKtx}"
+    internal val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
 
     val uiList = listOf(material, appcompat, coreKtx, lifecycle)
 }

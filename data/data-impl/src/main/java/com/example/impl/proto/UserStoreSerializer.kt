@@ -1,6 +1,5 @@
 package com.example.impl.proto
 
-import androidx.datastore.core.*
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer
 import com.example.photoch.UserStore

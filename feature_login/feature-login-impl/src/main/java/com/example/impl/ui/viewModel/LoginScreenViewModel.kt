@@ -2,11 +2,11 @@ package com.example.feature_login.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.domain.ProtoUserRepo
-import com.example.domain.utils.PasswordString
-import com.example.domain.utils.UserNameString
-import com.example.impl.usecase.AuthException
-import com.example.impl.usecase.AuthoriseRepo
+import com.example.common.utils.PasswordString
+import com.example.common.utils.UserNameString
+import com.example.domain.usecase.AuthoriseRepo
+import com.example.domain.usecase.ProtoUserRepo
+import com.example.domain.utils.AuthException
 import com.example.impl.utils.CheckStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,16 +25,22 @@ class LoginScreenViewModel @Inject constructor(
         MutableStateFlow(CheckStatus.EMPTY)
     val fieldsScreenState get(): StateFlow<CheckStatus> = _fieldsScreenState
 
-    fun checkPassword(
+    fun checkLoginAndPassword(
         enteredPassword: PasswordString,
         enteredLogin: UserNameString
     ) {
         viewModelScope.launch {
-            protoUserRepo.getUserDataState().collect {
+            protoUserRepo.getUserDataState().collect { userPersonalData ->
                 withContext(Dispatchers.IO) {
                     try {
-                        authoriseRepo.checkLoginCode(enteredLogin, it.userName.orEmpty())
-                        authoriseRepo.checkPinCode(enteredPassword, it.password.orEmpty())
+                        authoriseRepo.checkLogin(
+                            enteredLogin = enteredLogin,
+                            login = userPersonalData.userName
+                        )
+                        authoriseRepo.checkPinCode(
+                            enteredPassword = enteredPassword,
+                            password = userPersonalData.password
+                        )
                         _fieldsScreenState.emit(CheckStatus.SUCCES)
                     } catch (e: AuthException) {
                         _fieldsScreenState.emit(CheckStatus.UNSUCCES)

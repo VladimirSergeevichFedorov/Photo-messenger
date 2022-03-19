@@ -1,8 +1,8 @@
 package com.example.impl.di
 
 import com.example.api.LoginEntry
-import com.example.domain.FeatureEntry
-import com.example.domain.di.FeatureEntryKey
+import com.example.common.FeatureEntry
+import com.example.common.di.FeatureEntryKey
 import com.example.impl.LoginEntryImpl
 import dagger.Binds
 import dagger.Module

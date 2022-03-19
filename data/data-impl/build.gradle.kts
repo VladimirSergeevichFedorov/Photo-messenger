@@ -42,49 +42,30 @@ android {
     }
     composeOptions {
 
-        kotlinCompilerExtensionVersion = "1.0.0"
+        kotlinCompilerExtensionVersion = "1.1.0"
     }
 }
 
 dependencies {
     api(project(ModulesForApi.data))
-//    implementation(project(ModulesForApi.data))
     implementation(project(Modules.common))
+    implementation(project(Modules.domain))
 
-    implementation(AppDependencies.featureDomainLibraries)
-    kapt(AppDependencies.diLibrariesKapt)
+    implementation(AppDependencies.featureCommonLibraries)
 
-//    implementation("com.google.dagger:dagger-android:2.35.1")
-////    implementation 'com.google.dagger:dagger-android-support:2.x' // if you use the support libraries
-//    annotationProcessor("com.google.dagger:dagger-android-processor:2.27")
-//    annotationProcessor("com.google.dagger:dagger-compiler:2.36")
-//
     implementation("androidx.datastore:datastore-core:1.0.0")
     api("com.google.protobuf:protobuf-javalite:3.19.4")
-//    api("androidx.preference:preference-ktx:1.2.0")
+    kapt(AppDependencies.diLibrariesKapt)
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-//    implementation("androidx.appcompat:appcompat:1.4.1")
-//    implementation("com.google.android.material:material:1.5.0")
-//    testImplementation 'junit:junit:4.+'
-//    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-//    implementation("androidx.core:core-ktx:+")
-//    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}")
+
+    testImplementation(AppDependencies.testLibraries)
+    androidTestImplementation(AppDependencies.androidTestLibraries)
 }
 
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:3.19.4"
     }
-//    generateProtoTasks {
-//        all().forEach { task ->
-//            task.plugins {
-//                create("java") {
-//                    option("lite")
-//                }
-//            }
-//        }
-//    }
     generateProtoTasks {
         all().forEach { task ->
             task.builtins {

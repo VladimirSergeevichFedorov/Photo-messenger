@@ -1,7 +1,7 @@
 package com.example.impl.di
 
 import com.example.api.DataProvider
-import com.example.domain.di.CommonProvider
+import com.example.common.di.CommonProvider
 import dagger.Component
 import javax.inject.Singleton
 

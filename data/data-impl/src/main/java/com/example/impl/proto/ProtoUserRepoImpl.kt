@@ -1,12 +1,12 @@
 package com.example.impl.proto
 
 import androidx.datastore.core.DataStore
-import com.example.domain.domain.ProtoUserRepo
+import com.example.domain.usecase.ProtoUserRepo
 import com.example.domain.entity.UserPersonalData
-import com.example.domain.utils.EmailString
-import com.example.domain.utils.MobileNumberString
-import com.example.domain.utils.PasswordString
-import com.example.domain.utils.UserNameString
+import com.example.common.utils.EmailString
+import com.example.common.utils.MobileNumberString
+import com.example.common.utils.PasswordString
+import com.example.common.utils.UserNameString
 import com.example.photoch.UserStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
