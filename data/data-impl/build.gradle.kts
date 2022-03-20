@@ -44,6 +44,10 @@ android {
 
         kotlinCompilerExtensionVersion = "1.1.0"
     }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+        unitTests.isIncludeAndroidResources = true
+    }
 }
 
 dependencies {
@@ -52,14 +56,19 @@ dependencies {
     implementation(project(Modules.domain))
 
     implementation(AppDependencies.featureCommonLibraries)
-
-    implementation("androidx.datastore:datastore-core:1.0.0")
-    api("com.google.protobuf:protobuf-javalite:3.19.4")
-    kapt(AppDependencies.diLibrariesKapt)
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-
-    testImplementation(AppDependencies.testLibraries)
-    androidTestImplementation(AppDependencies.androidTestLibraries)
+//
+//    implementation("androidx.datastore:datastore-core:1.0.0")
+//    api("com.google.protobuf:protobuf-javalite:3.19.4")
+//    kapt(AppDependencies.diLibrariesKapt)
+//    implementation("androidx.datastore:datastore-preferences:1.0.0")
+//
+//    kaptTest(AppDependencies.testKapt)
+//    kaptAndroidTest(AppDependencies.testAndroidKapt)
+//    testImplementation(AppDependencies.testLibraries)
+//    androidTestImplementation(AppDependencies.androidTestLibraries)
+//
+//    testImplementation("io.mockk:mockk:1.10.5")
+//    testImplementation("org.hamcrest:hamcrest-all:1.3")
 }
 
 protobuf {

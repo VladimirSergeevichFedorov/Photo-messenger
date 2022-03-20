@@ -37,7 +37,4 @@ android {
 
 dependencies {
     implementation(AppDependencies.featureDomainLibraries)
-
-    testImplementation(AppDependencies.testLibraries)
-    androidTestImplementation(AppDependencies.androidTestLibraries)
 }

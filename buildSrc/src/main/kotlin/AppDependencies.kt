@@ -31,8 +31,8 @@ object AppDependencies {
     }
     val featureDomainLibraries = arrayListOf<String>().apply {
         addAll(Coroutines.coroutinesList)
-        add(Other.kotlinStdlib)
-        addAll(UI.uiList)
+//        add(Other.kotlinStdlib)
+//        addAll(UI.uiList)
 //        add(Compose.ui)
 //        addAll(Compose.Accompanist.insetsList)
     }

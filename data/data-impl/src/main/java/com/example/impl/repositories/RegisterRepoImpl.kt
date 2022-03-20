@@ -1,6 +1,6 @@
 package com.example.impl.repositories
 
-import com.example.domain.usecase.RegisterRepo
+import com.example.domain.repositories.RegisterRepo
 import com.example.common.utils.ConfirmPassword
 import com.example.common.utils.PasswordString
 import com.example.domain.utils.RegisterException

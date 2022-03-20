@@ -1,8 +1,8 @@
 package com.example.impl.di
 
-import com.example.domain.usecase.AuthoriseRepo
-import com.example.domain.usecase.ProtoUserRepo
-import com.example.domain.usecase.RegisterRepo
+import com.example.domain.repositories.AuthoriseRepo
+import com.example.domain.repositories.ProtoUserRepo
+import com.example.domain.repositories.RegisterRepo
 import com.example.impl.proto.ProtoUserRepoImpl
 import com.example.impl.repositories.AuthoriseRepoImpl
 import com.example.impl.repositories.RegisterRepoImpl

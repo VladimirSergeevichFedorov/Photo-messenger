@@ -2,15 +2,17 @@ package com.example.feature_login.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.usecase.ProtoUserRepo
-import com.example.domain.usecase.RegisterRepo
 import com.example.common.utils.ConfirmPassword
 import com.example.common.utils.EmailString
 import com.example.common.utils.MobileNumberString
 import com.example.common.utils.PasswordString
-import com.example.domain.utils.RegisterException
 import com.example.common.utils.UserNameString
 import com.example.common.utils.getSHA512
+import com.example.domain.entitys.UserPersonalData
+import com.example.domain.repositories.ProtoUserRepo
+import com.example.domain.repositories.RegisterRepo
+import com.example.domain.usecase.SaveUserDataUseCase
+import com.example.domain.utils.RegisterException
 import com.example.impl.utils.CheckStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +22,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class LoginRegisterScreenViewModel @Inject constructor(
-    private val protoUserRepo: ProtoUserRepo,
+    private val saveUserDataUseCase: SaveUserDataUseCase,
     private val registerRepo: RegisterRepo
 ) : ViewModel() {
 
@@ -43,11 +45,11 @@ class LoginRegisterScreenViewModel @Inject constructor(
                         confirmPassword = confirmPassword,
                         password = password
                     )
-                    protoUserRepo.apply {
-                        saveUserNameState(login)
-                        saveUserPasswordState(password.getSHA512())
-                        saveEmailState(email)
-                        saveMobileNumberState(mobileNumber)
+                    saveUserDataUseCase.apply {
+                        saveEmail(email)
+                        saveMobileNumber(mobileNumber)
+                        saveUserName(login)
+                        saveUserPassword(password.getSHA512())
                     }
                     _fieldsScreenStateRegister.emit(CheckStatus.SUCCES)
                 } catch (e: RegisterException) {

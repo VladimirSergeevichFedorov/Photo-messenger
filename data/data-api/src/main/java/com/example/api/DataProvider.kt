@@ -17,9 +17,11 @@
 package com.example.api
 
 import androidx.compose.runtime.compositionLocalOf
-import com.example.domain.usecase.AuthoriseRepo
-import com.example.domain.usecase.ProtoUserRepo
-import com.example.domain.usecase.RegisterRepo
+import com.example.domain.repositories.AuthoriseRepo
+import com.example.domain.usecase.GetUserDataUseCase
+import com.example.domain.repositories.ProtoUserRepo
+import com.example.domain.repositories.RegisterRepo
+import com.example.domain.usecase.SaveUserDataUseCase
 
 interface DataProvider {
 
@@ -32,6 +34,10 @@ interface DataProvider {
     val authoriseRepo: AuthoriseRepo
 
     val registerRepo: RegisterRepo
+
+    val saveUserDataUseCase: SaveUserDataUseCase
+
+    val getUserDataUseCase: GetUserDataUseCase
 }
 
 val LocalDataProvider = compositionLocalOf<DataProvider> { error("No data provider found!") }

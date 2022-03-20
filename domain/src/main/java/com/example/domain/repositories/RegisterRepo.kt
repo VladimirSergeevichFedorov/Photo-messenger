@@ -1,4 +1,4 @@
-package com.example.domain.usecase
+package com.example.domain.repositories
 
 interface RegisterRepo {
     suspend fun saveLogin(login: String)

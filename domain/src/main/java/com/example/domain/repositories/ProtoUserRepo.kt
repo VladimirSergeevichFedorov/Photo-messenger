@@ -1,6 +1,6 @@
-package com.example.domain.usecase
+package com.example.domain.repositories
 
-import com.example.domain.entity.UserPersonalData
+import com.example.domain.entitys.UserPersonalData
 import kotlinx.coroutines.flow.Flow
 
 interface ProtoUserRepo {

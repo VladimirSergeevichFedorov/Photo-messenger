@@ -1,14 +1,16 @@
 import android.content.Context
 import com.example.impl.di.DataModule
+import com.example.impl.di.DataUseCaseModule
 import com.example.photoch.RepositoryTest
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
 @Component(
-
-    modules = [DataModule::class, TestAppModule::class]
+    modules = [
+        DataModule::class,
+        TestAppModule::class,
+        DataUseCaseModule::class
+    ]
 )
 interface TestAppComponent {
 

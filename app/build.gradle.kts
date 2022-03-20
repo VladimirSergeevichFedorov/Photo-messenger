@@ -69,7 +69,4 @@ dependencies {
     kaptAndroidTest(AppDependencies.testAndroidKapt)
     testImplementation(AppDependencies.testLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
-
-    testImplementation("io.mockk:mockk:1.10.5")
-    testImplementation("org.hamcrest:hamcrest-all:1.3")
 }

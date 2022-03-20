@@ -1,6 +1,6 @@
 package com.example.impl.repositories
 
-import com.example.domain.usecase.AuthoriseRepo
+import com.example.domain.repositories.AuthoriseRepo
 import com.example.domain.utils.AuthException
 import com.example.common.utils.EnterUserNameString
 import com.example.common.utils.PasswordString

@@ -2,8 +2,9 @@ package com.example.photoch
 
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.common.utils.getSHA512
-import com.example.domain.usecase.AuthoriseRepo
-import com.example.domain.usecase.RegisterRepo
+import com.example.domain.repositories.AuthoriseRepo
+import com.example.domain.repositories.RegisterRepo
+import com.example.domain.usecase.SaveUserDataUseCase
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -19,7 +20,7 @@ class RepositoryTest {
     lateinit var registerRepo: RegisterRepo
 
 //    @Inject
-//    lateinit var protoUserRepo: ProtoUserRepo
+//    lateinit var protoUserRepo: SaveUserDataUseCase
 
     @Before
     fun setup() {
@@ -47,10 +48,18 @@ class RepositoryTest {
 
 //    @Test
 //    fun checkDataStore() = runBlocking {
-//        assertNotNull(protoUserRepo.saveUserNameState("Mihail"))
-//        assertNotNull(protoUserRepo.saveEmailState("michail@gmail.com"))
-//        assertNotNull(protoUserRepo.saveMobileNumberState("89395557707"))
-//        assertNotNull(protoUserRepo.saveUserPasswordState("qwerty"))
-//        assertNotNull(protoUserRepo.getUserDataState())
+//        val actual = protoUserRepo.apply {
+////            saveEmail("michail@gmail.com")
+////            saveMobileNumberState("89395557707")
+////            saveUserNameState("Mihail")
+////            saveUserPasswordState("qwerty")
+//        }
+////        val expected = protoUserRepo.getUserDataState()
+////        assertEquals(actual, expected)
+////        assertNotNull(protoUserRepo.saveUserNameState("Mihail"))
+////        assertNotNull(protoUserRepo.saveEmailState("michail@gmail.com"))
+////        assertNotNull(protoUserRepo.saveMobileNumberState("89395557707"))
+////        assertNotNull(protoUserRepo.saveUserPasswordState("qwerty"))
+////        assertNotNull(protoUserRepo.getUserDataState())
 //    }
 }

@@ -8,6 +8,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     dependencies = [CommonProvider::class],
-    modules = [DataModule::class, DataProtoModule::class]
+    modules = [DataModule::class, DataProtoModule::class,
+        DataUseCaseModule::class
+    ]
 )
 interface DataComponent : DataProvider
