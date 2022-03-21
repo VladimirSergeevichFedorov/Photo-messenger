@@ -1,12 +1,11 @@
 package com.example.impl.proto
 
 import androidx.datastore.core.DataStore
-import com.example.common.utils.EmailString
-import com.example.common.utils.MobileNumberString
-import com.example.common.utils.PasswordString
-import com.example.common.utils.UserNameString
-import com.example.domain.entitys.UserPersonalData
+import com.example.domain.entities.UserPersonalData
 import com.example.domain.repositories.ProtoUserRepo
+import com.example.impl.entities.UserDataForRegistration
+import com.example.impl.mappers.mapToGetUserData
+import com.example.impl.mappers.mapToSetUserData
 import com.example.photoch.UserStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -19,35 +18,27 @@ import javax.inject.Singleton
 class ProtoUserRepoImpl @Inject constructor(
     private val protoDataStore: DataStore<UserStore>
 ) : ProtoUserRepo {
+    override suspend fun saveUserDataState(userPersonalData: UserPersonalData) {
+        mapToSetUserData(userPersonalData)
 
-    override suspend fun saveUserPasswordState(state: PasswordString) {
         protoDataStore.updateData { storePassword ->
             storePassword.toBuilder()
-                .setPassword(state)
+                .setPassword(mapToSetUserData(userPersonalData).password)
                 .build()
         }
-    }
-
-    override suspend fun saveUserNameState(state: UserNameString) {
-        protoDataStore.updateData { store ->
-            store.toBuilder()
-                .setUserName(state)
+        protoDataStore.updateData { storeUserName ->
+            storeUserName.toBuilder()
+                .setUserName(mapToSetUserData(userPersonalData).userName)
                 .build()
         }
-    }
-
-    override suspend fun saveEmailState(state: EmailString) {
-        protoDataStore.updateData { store ->
-            store.toBuilder()
-                .setEmail(state)
+        protoDataStore.updateData { storeEmail ->
+            storeEmail.toBuilder()
+                .setEmail(mapToSetUserData(userPersonalData).email)
                 .build()
         }
-    }
-
-    override suspend fun saveMobileNumberState(state: MobileNumberString) {
-        protoDataStore.updateData { store ->
-            store.toBuilder()
-                .setMobileNumber(state)
+        protoDataStore.updateData { storeMobileNumber ->
+            storeMobileNumber.toBuilder()
+                .setMobileNumber(mapToSetUserData(userPersonalData).mobileNumber)
                 .build()
         }
     }
@@ -62,11 +53,13 @@ class ProtoUserRepoImpl @Inject constructor(
                 }
             }.map { protoBuilder ->
 
-                UserPersonalData(
-                    protoBuilder.password,
-                    protoBuilder.userName,
-                    protoBuilder.email,
-                    protoBuilder.mobileNumber
+                mapToGetUserData(
+                    UserDataForRegistration(
+                        protoBuilder.password,
+                        protoBuilder.userName,
+                        protoBuilder.email,
+                        protoBuilder.mobileNumber
+                    )
                 )
             }
     }

@@ -56,12 +56,12 @@ dependencies {
     implementation(project(Modules.domain))
 
     implementation(AppDependencies.featureCommonLibraries)
-//
-//    implementation("androidx.datastore:datastore-core:1.0.0")
-//    api("com.google.protobuf:protobuf-javalite:3.19.4")
-//    kapt(AppDependencies.diLibrariesKapt)
-//    implementation("androidx.datastore:datastore-preferences:1.0.0")
-//
+
+    implementation("androidx.datastore:datastore-core:1.0.0")
+    api("com.google.protobuf:protobuf-javalite:3.19.4")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    kapt(AppDependencies.diLibrariesKapt)
 //    kaptTest(AppDependencies.testKapt)
 //    kaptAndroidTest(AppDependencies.testAndroidKapt)
 //    testImplementation(AppDependencies.testLibraries)

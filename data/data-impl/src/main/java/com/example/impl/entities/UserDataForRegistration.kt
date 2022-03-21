@@ -1,6 +1,6 @@
-package com.example.domain.entitys
+package com.example.impl.entities
 
-data class UserPersonalData(
+data class UserDataForRegistration(
     val password: String,
     val userName: String,
     val email: String?,

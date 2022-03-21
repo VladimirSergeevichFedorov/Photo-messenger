@@ -8,8 +8,7 @@ import com.example.common.utils.MobileNumberString
 import com.example.common.utils.PasswordString
 import com.example.common.utils.UserNameString
 import com.example.common.utils.getSHA512
-import com.example.domain.entitys.UserPersonalData
-import com.example.domain.repositories.ProtoUserRepo
+import com.example.domain.entities.UserPersonalData
 import com.example.domain.repositories.RegisterRepo
 import com.example.domain.usecase.SaveUserDataUseCase
 import com.example.domain.utils.RegisterException
@@ -45,12 +44,14 @@ class LoginRegisterScreenViewModel @Inject constructor(
                         confirmPassword = confirmPassword,
                         password = password
                     )
-                    saveUserDataUseCase.apply {
-                        saveEmail(email)
-                        saveMobileNumber(mobileNumber)
-                        saveUserName(login)
-                        saveUserPassword(password.getSHA512())
-                    }
+                    saveUserDataUseCase.saveUserDataState(
+                        userPersonalData = UserPersonalData(
+                            password = password.getSHA512(),
+                            userName = login,
+                            mobileNumber = mobileNumber,
+                            email = email
+                        )
+                    )
                     _fieldsScreenStateRegister.emit(CheckStatus.SUCCES)
                 } catch (e: RegisterException) {
                     _fieldsScreenStateRegister.emit(CheckStatus.UNSUCCES)
