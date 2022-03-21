@@ -47,6 +47,9 @@ object AppDependencies {
         addAll(Coroutines.coroutinesList)
         addAll(Retrofit.retrofitList)
     }
+    val featuresApi = arrayListOf<String>().apply {
+        addAll(Compose.composeList)
+    }
     val featureMapLibraries = arrayListOf<String>().apply {
         add(Dagger.dagger)
 

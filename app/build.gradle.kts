@@ -59,6 +59,7 @@ android.applicationVariants.all {
 }
 dependencies {
     implementation(project(Modules.featureLogin))
+    implementation(project(Modules.featureTape))
     implementation(project(Modules.common))
     implementation(project(Modules.data))
     implementation(project(Modules.domain))

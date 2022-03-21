@@ -1,4 +1,4 @@
-package com.example.impl.mappers
+package com.example.impl.mapping
 
 import com.example.domain.entities.UserPersonalData
 import com.example.impl.entities.UserDataForRegistration

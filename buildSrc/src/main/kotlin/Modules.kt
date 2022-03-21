@@ -4,4 +4,5 @@ object Modules {
     val common = ":common"
     val domain = ":domain"
     val featureLogin = ":feature_login:feature-login-impl"
+    val featureTape = ":feature_tape:feature-tape-impl"
 }

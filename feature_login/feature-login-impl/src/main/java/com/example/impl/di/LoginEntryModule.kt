@@ -10,7 +10,7 @@ import dagger.multibindings.IntoMap
 import javax.inject.Singleton
 
 @Module
-interface LoginModule {
+interface LoginEntryModule {
 
     @Binds
     @Singleton

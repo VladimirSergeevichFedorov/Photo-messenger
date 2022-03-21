@@ -4,8 +4,8 @@ import androidx.datastore.core.DataStore
 import com.example.domain.entities.UserPersonalData
 import com.example.domain.repositories.ProtoUserRepo
 import com.example.impl.entities.UserDataForRegistration
-import com.example.impl.mappers.mapToGetUserData
-import com.example.impl.mappers.mapToSetUserData
+import com.example.impl.mapping.mapToGetUserData
+import com.example.impl.mapping.mapToSetUserData
 import com.example.photoch.UserStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
