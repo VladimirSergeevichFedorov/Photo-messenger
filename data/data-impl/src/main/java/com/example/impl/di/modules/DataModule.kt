@@ -1,4 +1,4 @@
-package com.example.impl.di
+package com.example.impl.di.modules
 
 import com.example.domain.repositories.AuthoriseRepo
 import com.example.domain.repositories.ProtoUserRepo

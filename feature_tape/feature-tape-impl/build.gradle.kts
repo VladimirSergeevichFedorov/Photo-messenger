@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -48,6 +49,7 @@ dependencies {
     implementation(project(ModulesForApi.data))
     api(project(ModulesForApi.featureTape))
 
+    implementation("io.coil-kt:coil-compose:1.3.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
     implementation(AppDependencies.featureLibraries)
     kapt(AppDependencies.diLibrariesKapt)

@@ -55,7 +55,7 @@ dependencies {
     implementation(project(Modules.common))
     implementation(project(Modules.domain))
 
-    implementation(AppDependencies.commonLibraries)
+    implementation(AppDependencies.dataLibraries)
 
     implementation("androidx.datastore:datastore-core:1.0.0")
     api("com.google.protobuf:protobuf-javalite:3.19.4")

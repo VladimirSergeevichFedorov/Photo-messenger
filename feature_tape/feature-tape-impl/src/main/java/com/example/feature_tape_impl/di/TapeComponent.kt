@@ -6,8 +6,7 @@ import com.example.feature_tape_impl.ui.viewModel.TapeScreenViewModel
 import dagger.Component
 
 @Component(
-    dependencies = [DataProvider::class],
-
+    dependencies = [DataProvider::class]
 )
 interface TapeComponent : TapeProvider {
     val tapeScreenViewModel: TapeScreenViewModel

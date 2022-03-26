@@ -21,6 +21,8 @@ import com.example.domain.repositories.AuthoriseRepo
 import com.example.domain.usecase.GetUserDataUseCase
 import com.example.domain.repositories.ProtoUserRepo
 import com.example.domain.repositories.RegisterRepo
+import com.example.domain.repositories.TapeRepo
+import com.example.domain.usecase.GetTapeUsersUseCase
 import com.example.domain.usecase.SaveUserDataUseCase
 
 interface DataProvider {
@@ -38,6 +40,8 @@ interface DataProvider {
     val saveUserDataUseCase: SaveUserDataUseCase
 
     val getUserDataUseCase: GetUserDataUseCase
+
+    val getTapeUsersUseCase: GetTapeUsersUseCase
 }
 
 val LocalDataProvider = compositionLocalOf<DataProvider> { error("No data provider found!") }

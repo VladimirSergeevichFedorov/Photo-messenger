@@ -14,7 +14,6 @@ object AppDependencies {
         addAll(Retrofit.retrofitList)
     }
     val commonLibraries = arrayListOf<String>().apply {
-        addAll(UI.uiList)
         add(Dagger.dagger)
 
 //        addAll(Retrofit.retrofitList)
@@ -25,6 +24,21 @@ object AppDependencies {
         add(Compose.material)
         add(Compose.tooling)
         addAll(UI.uiList)
+        addAll(Coroutines.coroutinesList)
+        add(Other.kotlinStdlib)
+//        addAll(Compose.Accompanist.insetsList)
+    }
+    val dataLibraries = arrayListOf<String>().apply {
+        add(Dagger.dagger)
+
+        addAll(Retrofit.retrofitList)
+//        add(Other.protobuf)
+//        add(Other.datastore)
+        add(Compose.composeNavigation)
+        add(Compose.ui)
+        add(Compose.material)
+        add(Compose.tooling)
+//        addAll(UI.uiList)
         addAll(Coroutines.coroutinesList)
         add(Other.kotlinStdlib)
 //        addAll(Compose.Accompanist.insetsList)
@@ -49,6 +63,7 @@ object AppDependencies {
     }
     val featuresApi = arrayListOf<String>().apply {
         addAll(Compose.composeList)
+        add(Retrofit.retrofit)
     }
     val featureMapLibraries = arrayListOf<String>().apply {
         add(Dagger.dagger)

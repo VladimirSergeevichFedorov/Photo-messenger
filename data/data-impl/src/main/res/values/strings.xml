@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Strings related to Retrofit -->
+    <string name="retrofit_url">https://reqres.in/</string>
+    <string name="retrofit_gson_date_format">yyyy-MM-dd\'T\'HH:mm:ss</string>
+</resources>

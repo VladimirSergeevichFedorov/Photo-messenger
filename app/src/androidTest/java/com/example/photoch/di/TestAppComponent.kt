@@ -1,6 +1,6 @@
 import android.content.Context
-import com.example.impl.di.DataModule
-import com.example.impl.di.DataUseCaseModule
+import com.example.impl.di.modules.DataModule
+import com.example.impl.di.modules.DataUseCaseModule
 import com.example.photoch.RepositoryTest
 import dagger.BindsInstance
 import dagger.Component
