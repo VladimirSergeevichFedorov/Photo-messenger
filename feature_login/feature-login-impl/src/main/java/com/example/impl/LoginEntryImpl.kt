@@ -63,5 +63,6 @@ class LoginEntryImpl @Inject constructor() : LoginEntry() {
     internal object InternalRoutes {
         const val REGISTRATION = "registration"
         const val LOGIN = "login"
+        const val TAPE = "tape"
     }
 }

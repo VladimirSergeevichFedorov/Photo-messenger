@@ -13,7 +13,7 @@ object AppDependencies {
         addAll(Coroutines.coroutinesList)
         addAll(Retrofit.retrofitList)
     }
-    val featureCommonLibraries = arrayListOf<String>().apply {
+    val commonLibraries = arrayListOf<String>().apply {
         addAll(UI.uiList)
         add(Dagger.dagger)
 
@@ -29,14 +29,14 @@ object AppDependencies {
         add(Other.kotlinStdlib)
 //        addAll(Compose.Accompanist.insetsList)
     }
-    val featureDomainLibraries = arrayListOf<String>().apply {
+    val domainLibraries = arrayListOf<String>().apply {
         addAll(Coroutines.coroutinesList)
 //        add(Other.kotlinStdlib)
 //        addAll(UI.uiList)
 //        add(Compose.ui)
 //        addAll(Compose.Accompanist.insetsList)
     }
-    val featureLoginLibraries = arrayListOf<String>().apply {
+    val featureLibraries = arrayListOf<String>().apply {
         add(Dagger.dagger)
 //        add(Compose.activityCompose)
 //        add(Compose.ui)

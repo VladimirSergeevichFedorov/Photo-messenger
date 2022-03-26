@@ -36,5 +36,5 @@ android {
 }
 
 dependencies {
-    implementation(AppDependencies.featureDomainLibraries)
+    implementation(AppDependencies.domainLibraries)
 }

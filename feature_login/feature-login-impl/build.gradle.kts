@@ -49,7 +49,7 @@ dependencies {
     api(project(ModulesForApi.featureLogin))
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
-    implementation(AppDependencies.featureLoginLibraries)
+    implementation(AppDependencies.featureLibraries)
     kapt(AppDependencies.diLibrariesKapt)
 
     testImplementation(AppDependencies.testLibraries)

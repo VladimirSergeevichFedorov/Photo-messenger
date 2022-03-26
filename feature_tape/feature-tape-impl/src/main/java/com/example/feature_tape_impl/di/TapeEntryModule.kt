@@ -1,5 +1,6 @@
 package com.example.feature_tape_impl.di
 
+import com.example.common.FeatureEntry
 import com.example.common.di.FeatureEntryKey
 import com.example.feature_tape_api.TapeEntry
 import com.example.feature_tape_impl.TapeEntryImpl
@@ -15,5 +16,5 @@ interface TapeEntryModule {
     @Singleton
     @IntoMap
     @FeatureEntryKey(TapeEntry::class)
-    fun tapeEntry(impl: TapeEntryImpl): TapeEntry
+    fun tapeEntry(impl: TapeEntryImpl): FeatureEntry
 }

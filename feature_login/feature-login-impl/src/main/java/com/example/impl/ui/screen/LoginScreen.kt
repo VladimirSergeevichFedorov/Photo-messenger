@@ -81,11 +81,8 @@ fun LoginAuthScreen(
                 composableScope.launch {
                     viewModel.fieldsScreenState.collect { checkAuth ->
                         when (checkAuth) {
-                            CheckStatus.SUCCES -> Toast.makeText(
-                                context,
-                                "Пароль совпадает",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            CheckStatus.SUCCES ->
+                                navController.navigate(LoginEntryImpl.InternalRoutes.TAPE)
                             CheckStatus.UNSUCCES -> Toast.makeText(
                                 context,
                                 R.string.invalid_password,

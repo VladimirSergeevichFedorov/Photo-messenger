@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.api.LoginEntry
 import com.example.common.find
@@ -29,7 +30,7 @@ fun Navigation() {
                 navigation(navController, destinations)
             }
             with(tapeScreen) {
-                navigation(navController, destinations)
+                composable(navController, destinations)
             }
         }
     }

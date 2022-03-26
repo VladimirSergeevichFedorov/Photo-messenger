@@ -43,7 +43,7 @@ android {
     }
 }
 dependencies {
-    implementation(AppDependencies.featureCommonLibraries)
+    implementation(AppDependencies.commonLibraries)
     kapt(AppDependencies.diLibrariesKapt)
     kapt(AppDependencies.diLibrariesKapt)
 
