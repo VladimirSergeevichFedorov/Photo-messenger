@@ -33,6 +33,7 @@ object Versions {
     const val composeNavigation = "2.4.0-rc01"
     const val accompanistPager = "0.14.0"
     const val accompanistInsets = "0.22.0-rc"
+    const val roomVersion = "2.4.2"
 
     // test
     const val junit = "4.13.2"

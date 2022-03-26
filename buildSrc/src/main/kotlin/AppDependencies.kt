@@ -30,7 +30,6 @@ object AppDependencies {
     }
     val dataLibraries = arrayListOf<String>().apply {
         add(Dagger.dagger)
-
         addAll(Retrofit.retrofitList)
 //        add(Other.protobuf)
 //        add(Other.datastore)

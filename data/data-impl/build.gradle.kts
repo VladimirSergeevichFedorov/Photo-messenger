@@ -57,11 +57,16 @@ dependencies {
 
     implementation(AppDependencies.dataLibraries)
 
+    implementation(dependenciesForModule.Room.roomRuntime)
+    implementation(dependenciesForModule.Room.roomKtx)
+    annotationProcessor(dependenciesForModule.Room.roomCompiler)
+
     implementation("androidx.datastore:datastore-core:1.0.0")
     api("com.google.protobuf:protobuf-javalite:3.19.4")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     kapt(AppDependencies.diLibrariesKapt)
+    kapt(dependenciesForModule.Room.roomCompilerKapt)
 //    kaptTest(AppDependencies.testKapt)
 //    kaptAndroidTest(AppDependencies.testAndroidKapt)
 //    testImplementation(AppDependencies.testLibraries)
