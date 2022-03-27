@@ -19,7 +19,7 @@ class TapeScreenViewModel @Inject constructor(
 
     fun loadUsersData() {
         viewModelScope.launch {
-            _networkResultStateFlow.emit(getTapeUsersUseCase.getUsers())
+            _networkResultStateFlow.emit(getTapeUsersUseCase.getUsersStorage())
         }
     }
 }

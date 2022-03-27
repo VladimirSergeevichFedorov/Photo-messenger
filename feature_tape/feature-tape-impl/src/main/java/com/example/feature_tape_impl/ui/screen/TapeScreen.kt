@@ -20,9 +20,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.feature_tape_impl.ui.viewModel.TapeScreenViewModel
 
+@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun TapeScreen(viewModel: TapeScreenViewModel) {
 
@@ -41,7 +43,7 @@ fun TapeScreen(viewModel: TapeScreenViewModel) {
                             .fillMaxWidth()
                     ) {
                         Image(
-                            painter = rememberImagePainter(userDataForTape.avatar),
+                            painter = rememberImagePainter(userDataForTape.avatar.orEmpty()),
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
@@ -50,8 +52,8 @@ fun TapeScreen(viewModel: TapeScreenViewModel) {
                                 .border(2.dp, Color.Gray, CircleShape)
                         )
                         Column(modifier = Modifier.padding(start = 6.dp)) {
-                            Text(userDataForTape.firstName)
-                            Text(userDataForTape.lastName)
+                            Text(userDataForTape.firstName.orEmpty())
+                            Text(userDataForTape.lastName.orEmpty())
                             Text(userDataForTape.email.orEmpty())
                         }
                     }

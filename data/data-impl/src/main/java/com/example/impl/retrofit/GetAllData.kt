@@ -3,34 +3,34 @@ package com.example.feature_tape_impl.retrofit
 import com.google.gson.annotations.SerializedName
 
 data class GetAllData(
-    val page: Long,
+    val page: Long?,
 
     @SerializedName("per_page")
-    val perPage: Long,
+    val perPage: Long?,
 
-    val total: Long,
+    val total: Long?,
 
     @SerializedName("total_pages")
-    val totalPages: Long,
+    val totalPages: Long?,
 
-    val data: List<UserData>,
-    val support: Support
+    val data: List<UserData>?,
+    val support: Support?
 )
 
 data class UserData(
-    val id: Long,
+    val id: Long?,
     val email: String?,
 
     @SerializedName("first_name")
-    val firstName: String,
+    val firstName: String?,
 
     @SerializedName("last_name")
-    val lastName: String,
+    val lastName: String?,
 
-    val avatar: String
+    val avatar: String?
 )
 
 data class Support(
-    val url: String,
-    val text: String
+    val url: String?,
+    val text: String?
 )

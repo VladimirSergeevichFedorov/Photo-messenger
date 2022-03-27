@@ -13,3 +13,5 @@ fun String.getSHA512(): String {
     }
     return hashtext
 }
+
+fun Long?.orZero(): Long = this ?: 0
