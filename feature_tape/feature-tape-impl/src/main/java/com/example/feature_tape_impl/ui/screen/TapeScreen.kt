@@ -43,7 +43,7 @@ fun TapeScreen(viewModel: TapeScreenViewModel) {
                             .fillMaxWidth()
                     ) {
                         Image(
-                            painter = rememberImagePainter(userDataForTape.avatar.orEmpty()),
+                            painter = rememberImagePainter(userDataForTape.avatar),
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
@@ -52,9 +52,9 @@ fun TapeScreen(viewModel: TapeScreenViewModel) {
                                 .border(2.dp, Color.Gray, CircleShape)
                         )
                         Column(modifier = Modifier.padding(start = 6.dp)) {
-                            Text(userDataForTape.firstName.orEmpty())
-                            Text(userDataForTape.lastName.orEmpty())
-                            Text(userDataForTape.email.orEmpty())
+                            Text(userDataForTape.firstName)
+                            Text(userDataForTape.lastName)
+                            Text(userDataForTape.email)
                         }
                     }
                 }

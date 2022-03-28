@@ -14,8 +14,23 @@ class TapeRepoImpl @Inject constructor(
     private val networkController: NetworkController,
     private val database: AppDatabase
 ) : TapeRepo {
-
     override suspend fun getDataUsersForTape(): List<UserDataForTape> {
+
+        fromNetworkToStorage()
+        return networkController.getUserList().body()?.data?.map { userTapeData ->
+            mapToGetUserDataForTape(
+                UserData(
+                    userTapeData.id.orZero(),
+                    userTapeData.email.orEmpty(),
+                    userTapeData.firstName.orEmpty(),
+                    userTapeData.lastName.orEmpty(),
+                    userTapeData.avatar.orEmpty()
+                )
+            )
+        } ?: emptyList()
+    }
+
+    private suspend fun fromNetworkToStorage() {
         networkController.getUserList().body()?.data?.let {
             database.userDao().insertAll(
                 networkController.getUserList().body()?.data.orEmpty()
@@ -30,17 +45,6 @@ class TapeRepoImpl @Inject constructor(
                             )
                         )
                     }
-            )
-        }
-        return database.userDao().getAll().map { userTapeData ->
-            mapToGetUserDataForTape(
-                UserData(
-                    userTapeData.id.orZero(),
-                    userTapeData.email.orEmpty(),
-                    userTapeData.firstName.orEmpty(),
-                    userTapeData.lastName.orEmpty(),
-                    userTapeData.avatar.orEmpty()
-                )
             )
         }
     }
