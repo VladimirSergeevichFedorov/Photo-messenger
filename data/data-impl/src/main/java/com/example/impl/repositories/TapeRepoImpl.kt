@@ -1,5 +1,6 @@
 package com.example.impl.repositories
 
+import android.util.Log
 import com.example.common.utils.orZero
 import com.example.domain.entities.UserDataForTape
 import com.example.domain.repositories.TapeRepo
@@ -16,18 +17,40 @@ class TapeRepoImpl @Inject constructor(
 ) : TapeRepo {
     override suspend fun getDataUsersForTape(): List<UserDataForTape> {
 
-        fromNetworkToStorage()
-        return networkController.getUserList().body()?.data?.map { userTapeData ->
-            mapToGetUserDataForTape(
-                UserData(
-                    userTapeData.id.orZero(),
-                    userTapeData.email.orEmpty(),
-                    userTapeData.firstName.orEmpty(),
-                    userTapeData.lastName.orEmpty(),
-                    userTapeData.avatar.orEmpty()
-                )
+        val userData = mutableListOf<UserDataForTape>()
+        try {
+            val response = networkController.getUserList()
+            fromNetworkToStorage()
+            if (response.isSuccessful) {
+                response.body()?.data?.map { userTapeData ->
+                    mapToGetUserDataForTape(
+                        UserData(
+                            userTapeData.id.orZero(),
+                            userTapeData.email.orEmpty(),
+                            userTapeData.firstName.orEmpty(),
+                            userTapeData.lastName.orEmpty(),
+                            userTapeData.avatar.orEmpty()
+                        )
+                    )
+                }?.let { userData.addAll(it) }
+            }
+        } catch (exception: Exception) {
+            userData.addAll(
+                database.userDao().getAll().map { userTapeData ->
+                    mapToGetUserDataForTape(
+                        UserData(
+                            userTapeData.id.orZero(),
+                            userTapeData.email.orEmpty(),
+                            userTapeData.firstName.orEmpty(),
+                            userTapeData.lastName.orEmpty(),
+                            userTapeData.avatar.orEmpty()
+                        )
+                    )
+                }
             )
-        } ?: emptyList()
+            Log.d("TAG", "first coroutine exception $exception")
+        }
+        return userData
     }
 
     private suspend fun fromNetworkToStorage() {
