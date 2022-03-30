@@ -20,7 +20,6 @@ class TapeRepoImpl @Inject constructor(
         val userData = mutableListOf<UserDataForTape>()
         try {
             val response = networkController.getUserList()
-            fromNetworkToStorage()
             if (response.isSuccessful) {
                 response.body()?.data?.map { userTapeData ->
                     mapToGetUserDataForTape(
@@ -33,6 +32,7 @@ class TapeRepoImpl @Inject constructor(
                         )
                     )
                 }?.let { userData.addAll(it) }
+                fromNetworkToStorage()
             }
         } catch (exception: Exception) {
             userData.addAll(
