@@ -2,7 +2,9 @@ package com.example.feature_login.ui.screen
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Visibility
@@ -40,11 +42,14 @@ fun LoginRegisterScreen(
     var confirmPassword by rememberSaveable { mutableStateOf("") }
     var passwordVisibility by remember { mutableStateOf(false) }
     var confirmPasswordVisibility by remember { mutableStateOf(false) }
-    val icon = if (passwordVisibility) Icons.Rounded.Visibility else Icons.Rounded.VisibilityOff
+    val iconPassword = if (passwordVisibility) Icons.Rounded.Visibility else Icons.Rounded.VisibilityOff
+    val iconConfirmPassword = if (confirmPasswordVisibility) Icons.Rounded.Visibility else Icons.Rounded.VisibilityOff
 
     Column(
 //        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
@@ -92,7 +97,7 @@ fun LoginRegisterScreen(
             label = { Text(text = stringResource(R.string.field_password)) },
             trailingIcon = {
                 IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
-                    Icon(icon, stringResource(R.string.contentDescription_Visibility))
+                    Icon(iconPassword, stringResource(R.string.contentDescription_Visibility))
                 }
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -108,7 +113,7 @@ fun LoginRegisterScreen(
             label = { Text(text = stringResource(R.string.field_confirm_password)) },
             trailingIcon = {
                 IconButton(onClick = { confirmPasswordVisibility = !confirmPasswordVisibility }) {
-                    Icon(icon, stringResource(R.string.contentDescription_Visibility))
+                    Icon(iconConfirmPassword, stringResource(R.string.contentDescription_Visibility))
                 }
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),

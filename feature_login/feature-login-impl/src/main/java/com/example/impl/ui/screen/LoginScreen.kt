@@ -4,7 +4,9 @@ import android.graphics.Color.parseColor
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Visibility
@@ -41,6 +43,8 @@ fun LoginAuthScreen(
     var passwordVisibility by remember { mutableStateOf(false) }
     val icon = if (passwordVisibility) Icons.Rounded.Visibility else Icons.Rounded.VisibilityOff
     Column(
+        modifier = Modifier
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(

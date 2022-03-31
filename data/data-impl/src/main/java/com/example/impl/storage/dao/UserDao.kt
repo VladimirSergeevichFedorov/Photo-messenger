@@ -7,14 +7,13 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.impl.storage.entity.User
 
-
 @Dao
 interface UserDao {
     @Query("SELECT * FROM user")
     suspend fun getAll(): List<User>
 
     @Query("SELECT * FROM user WHERE id = :id")
-    fun getUser(id: Int): User
+    suspend fun getUser(id: Int): User
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(users: List<User>)

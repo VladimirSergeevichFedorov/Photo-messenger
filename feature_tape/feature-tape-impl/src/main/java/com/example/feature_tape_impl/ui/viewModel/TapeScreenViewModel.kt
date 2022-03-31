@@ -7,6 +7,7 @@ import com.example.domain.usecase.GetTapeUsersUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 class TapeScreenViewModel @Inject constructor(
@@ -19,7 +20,11 @@ class TapeScreenViewModel @Inject constructor(
 
     fun loadUsersData() {
         viewModelScope.launch {
-            _networkResultStateFlow.emit(getTapeUsersUseCase.getUsersStorage())
+            try {
+                _networkResultStateFlow.emit(getTapeUsersUseCase.getUsersNetwork())
+            } catch (e: Exception) {
+                _networkResultStateFlow.emit(getTapeUsersUseCase.getUsersStorage())
+            }
         }
     }
 }
