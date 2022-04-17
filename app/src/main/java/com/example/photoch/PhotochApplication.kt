@@ -6,7 +6,6 @@ import com.example.impl.di.DaggerDataComponent
 import com.example.photoch.di.AppProvider
 import com.example.photoch.di.DaggerAppComponent
 
-
 class PhotochApplication : Application() {
 
     lateinit var appProvider: AppProvider

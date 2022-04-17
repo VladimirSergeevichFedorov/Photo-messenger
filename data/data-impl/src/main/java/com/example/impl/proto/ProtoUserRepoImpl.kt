@@ -4,8 +4,7 @@ import androidx.datastore.core.DataStore
 import com.example.domain.entities.UserPersonalData
 import com.example.domain.repositories.ProtoUserRepo
 import com.example.impl.entities.UserDataForRegistration
-import com.example.impl.mapping.mapToGetUserData
-import com.example.impl.mapping.mapToSetUserData
+import com.example.impl.mapping.DataMapper
 import com.example.photoch.UserStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -16,29 +15,30 @@ import javax.inject.Singleton
 
 @Singleton
 class ProtoUserRepoImpl @Inject constructor(
-    private val protoDataStore: DataStore<UserStore>
+    private val protoDataStore: DataStore<UserStore>,
+    private val mapper: DataMapper
 ) : ProtoUserRepo {
     override suspend fun saveUserDataState(userPersonalData: UserPersonalData) {
-        mapToSetUserData(userPersonalData)
+        mapper.mapToSetUserData(userPersonalData)
 
         protoDataStore.updateData { storePassword ->
             storePassword.toBuilder()
-                .setPassword(mapToSetUserData(userPersonalData).password)
+                .setPassword(mapper.mapToSetUserData(userPersonalData).password)
                 .build()
         }
         protoDataStore.updateData { storeUserName ->
             storeUserName.toBuilder()
-                .setUserName(mapToSetUserData(userPersonalData).userName)
+                .setUserName(mapper.mapToSetUserData(userPersonalData).userName)
                 .build()
         }
         protoDataStore.updateData { storeEmail ->
             storeEmail.toBuilder()
-                .setEmail(mapToSetUserData(userPersonalData).email)
+                .setEmail(mapper.mapToSetUserData(userPersonalData).email)
                 .build()
         }
         protoDataStore.updateData { storeMobileNumber ->
             storeMobileNumber.toBuilder()
-                .setMobileNumber(mapToSetUserData(userPersonalData).mobileNumber)
+                .setMobileNumber(mapper.mapToSetUserData(userPersonalData).mobileNumber)
                 .build()
         }
     }
@@ -53,7 +53,7 @@ class ProtoUserRepoImpl @Inject constructor(
                 }
             }.map { protoBuilder ->
 
-                mapToGetUserData(
+                mapper.mapToGetUserData(
                     UserDataForRegistration(
                         protoBuilder.password,
                         protoBuilder.userName,

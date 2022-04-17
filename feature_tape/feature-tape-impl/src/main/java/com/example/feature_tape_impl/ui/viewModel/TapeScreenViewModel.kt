@@ -6,6 +6,7 @@ import com.example.domain.entities.UserDataForTape
 import com.example.domain.usecase.GetTapeUsersUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
@@ -14,16 +15,18 @@ class TapeScreenViewModel @Inject constructor(
     private val getTapeUsersUseCase: GetTapeUsersUseCase
 ) : ViewModel() {
 
-    private val _networkResultStateFlow = MutableStateFlow<List<UserDataForTape>>(emptyList())
-    val networkResultStateFlow: StateFlow<List<UserDataForTape>>
-        get() = _networkResultStateFlow
+    private val _usersResultStateFlow = MutableStateFlow<List<UserDataForTape>>(emptyList())
+    val usersResultStateFlow: StateFlow<List<UserDataForTape>>
+        get() = _usersResultStateFlow
 
     fun loadUsersData() {
         viewModelScope.launch {
             try {
-                _networkResultStateFlow.emit(getTapeUsersUseCase.getUsersNetwork())
+                _usersResultStateFlow.emit(getTapeUsersUseCase.getUsersNetwork())
             } catch (e: Exception) {
-                _networkResultStateFlow.emit(getTapeUsersUseCase.getUsersStorage())
+                getTapeUsersUseCase.getUsersStorage().collect { userDataFromStorage ->
+                    _usersResultStateFlow.emit(userDataFromStorage)
+                }
             }
         }
     }

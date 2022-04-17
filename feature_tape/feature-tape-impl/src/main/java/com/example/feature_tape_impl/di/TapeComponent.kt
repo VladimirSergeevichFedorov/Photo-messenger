@@ -8,6 +8,6 @@ import dagger.Component
 @Component(
     dependencies = [DataProvider::class]
 )
-interface TapeComponent : TapeProvider {
+interface TapeComponent : TapeProvider, DataProvider {
     val tapeScreenViewModel: TapeScreenViewModel
 }

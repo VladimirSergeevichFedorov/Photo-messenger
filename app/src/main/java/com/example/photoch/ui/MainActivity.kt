@@ -19,7 +19,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PhotochTheme {
-
                 Surface(color = MaterialTheme.colors.background) {
                     CompositionLocalProvider(
                         LocalAppProvider provides application.appProvider,

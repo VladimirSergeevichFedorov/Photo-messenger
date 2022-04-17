@@ -20,17 +20,22 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
+import com.example.feature_tape_impl.TapeEntryImpl
 import com.example.feature_tape_impl.ui.viewModel.TapeScreenViewModel
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun TapeScreen(viewModel: TapeScreenViewModel) {
+fun TapeScreen(
+    viewModel: TapeScreenViewModel,
+    navController: NavHostController,
+    onUserSelected: (userId: String) -> Unit
+) {
 
-    val usersData by viewModel.networkResultStateFlow.collectAsState()
+    val usersData by viewModel.usersResultStateFlow.collectAsState()
     viewModel.loadUsersData()
-
     LazyColumn {
         if (usersData.isNotEmpty()) {
             usersData.forEach { userDataForTape ->
@@ -39,7 +44,10 @@ fun TapeScreen(viewModel: TapeScreenViewModel) {
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
                             .padding(top = 8.dp, start = 8.dp)
-                            .clickable { }
+                            .clickable {
+                                navController.navigate(TapeEntryImpl.InternalRoutesTape.USER)
+                                onUserSelected(userDataForTape.id.toString())
+                            }
                             .fillMaxWidth()
                     ) {
                         Image(
